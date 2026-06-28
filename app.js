@@ -94,7 +94,7 @@ async function loadData() {
       .map((x, i) => `
         <div class="podium-item ${classes[i]}" style="animation-delay:${i * 180}ms">
           <div class="rank">${medals[i]}</div>
-          <div class="name">${x[0]}</div>
+          <div class="name">${escapeHTML(x[0])}</div>
           <div class="amount">€ ${x[1]}</div>
         </div>
       `)
@@ -104,7 +104,7 @@ async function loadData() {
     // LISTA COMPLETA
     // -------------------------
     document.getElementById("all").innerHTML =
-      sorted.map(x => `<li>${x[0]} — €${x[1]}</li>`).join("");
+      sorted.map(x => `<li>${escapeHTML(x[0])} — €${x[1]}</li>`).join("");
 
   } finally {
     loadingEl.style.display = "none";
