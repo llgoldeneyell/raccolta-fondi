@@ -155,16 +155,27 @@
     /* 🥇 PRIMO POSTO (CENTRO) */
     .podium-item.first {
       width: 100%;
-      display: block;
+      position: relative;
+      display: flex;              /* 🔥 non block */
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    
+      background: linear-gradient(135deg, #fff7d6, #ffffff);
+      border: 1px solid #fbbf24;
+      box-shadow: 0 12px 30px rgba(251,191,36,0.25);
+    
+      overflow: visible;
     }
     
     /* GLOW ORO */
     .podium-item.first::after {
       content: "";
       position: absolute;
-      inset: -2px;
-      border-radius: 16px;
-      background: radial-gradient(circle, rgba(251,191,36,0.35), transparent 70%);
+      inset: -6px;
+      border-radius: 18px;
+      background: radial-gradient(circle, rgba(251,191,36,0.45), transparent 70%);
       z-index: -1;
       animation: glowPulse 2.5s infinite;
     }
