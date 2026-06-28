@@ -49,6 +49,7 @@ async function loadData() {
   if (percent > 100) percent = 100;
 
   document.getElementById("bar").style.width = percent + "%";
+  document.getElementById("percent").innerText = Math.round(percent) + "%";
 
   // -------------------------
   // TOP DONATORI
