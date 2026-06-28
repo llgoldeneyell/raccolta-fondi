@@ -23,7 +23,7 @@ async function loadData() {
     if (key === "Obiettivo") goal = value;
   });
 
-  document.getElementById("goal").innerText = goal;
+  animateValue(document.getElementById("goal"), 0, goal, 900);
 
   // -------------------------
   // DONAZIONI
@@ -39,8 +39,8 @@ async function loadData() {
     donations[name] += value;
     total += value;
   });
-
-  document.getElementById("raised").innerText = total;
+  
+  animateValue(document.getElementById("raised"), 0, total, 900);
 
   // -------------------------
   // PROGRESS BAR
@@ -69,6 +69,24 @@ async function loadData() {
     sorted
       .map(x => `<li>${x[0]} — €${x[1]}</li>`)
       .join("");
+}
+
+function animateValue(el, start, end, duration) {
+  let startTimestamp = null;
+
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+
+    const value = Math.floor(progress * (end - start) + start);
+    el.innerText = value;
+
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+
+  window.requestAnimationFrame(step);
 }
 
 loadData();
