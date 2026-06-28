@@ -113,21 +113,28 @@ async function loadData() {
     `;
 
     // -------------------------
-    // LISTA COMPLETA (solo nomi, alfabetica)
+    // LISTA COMPLETA (solo nomi)
     // -------------------------
     
     const names = donationsRaw
       .slice(1)
       .map(row => (row[1] || "Sconosciuto").trim());
     
-    // rimuove duplicati
+    // dedup + sort
     const uniqueNames = [...new Set(names)]
       .filter(Boolean)
-      .sort((a, b) => a.localeCompare(b, 'it', { sensitivity: 'base' }));
+      .sort((a, b) =>
+        a.localeCompare(b, 'it', { sensitivity: 'base' })
+      );
     
     document.getElementById("all").innerHTML =
       uniqueNames
-        .map(name => `<li>${escapeHTML(name)}</li>`)
+        .map(name => `
+          <li>
+            <span class="avatar">${name[0].toUpperCase()}</span>
+            ${escapeHTML(name)}
+          </li>
+        `)
         .join("");
 
   } finally {
