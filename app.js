@@ -124,7 +124,12 @@ async function loadData() {
     
     const names = donationsRaw
       .slice(1)
-      .map(row => (row[1] || "Sconosciuto").trim());
+      .map(row =>
+        (row[1] || "Sconosciuto")
+          .toString()
+          .trim()
+          .replace(/\s+/g, " ") // 👈 elimina doppi spazi interni
+      );
     
     // dedup + sort
     const uniqueNames = [...new Set(names)]
@@ -132,12 +137,20 @@ async function loadData() {
       .sort((a, b) =>
         a.localeCompare(b, 'it', { sensitivity: 'base' })
       );
+
+    const getInitials = (name) =>
+      name
+        .split(" ")
+        .filter(Boolean)
+        .slice(0, 2)
+        .map(w => w[0].toUpperCase())
+        .join("");
     
     document.getElementById("all").innerHTML =
       uniqueNames
         .map(name => `
           <li>
-            <span class="avatar">${name[0].toUpperCase()}</span>
+            <span class="avatar">${getInitials(name)}</span>
             ${escapeHTML(name)}
           </li>
         `)
