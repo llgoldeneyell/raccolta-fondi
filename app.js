@@ -22,6 +22,8 @@ async function fetchCSV(url) {
     .map(r => r.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/));
 }
 
+const value = Number(x[1]) || 0;
+
 async function loadData() {
   if (loading) return;   // 🔒 blocca doppie esecuzioni
   loading = true;
@@ -95,7 +97,7 @@ async function loadData() {
         <div class="podium-item ${classes[i]}" style="animation-delay:${i * 180}ms">
           <div class="rank">${medals[i]}</div>
           <div class="name">${escapeHTML(x[0])}</div>
-          <div class="amount">€ ${x[1]}</div>
+          <div class="amount">€ ${value}</div>
         </div>
       `)
       .join("");
