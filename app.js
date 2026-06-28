@@ -52,27 +52,28 @@ async function loadData() {
   document.getElementById("percent").innerText = Math.round(percent) + "%";
 
   // -------------------------
-  // TOP DONATORI
+  // TOP DONATORI (PODIO PRO)
   // -------------------------
+  
   let sorted = Object.entries(donations)
     .sort((a,b)=>b[1]-a[1]);
   
-  document.getElementById("top").innerHTML =
-    sorted.slice(0,3)
-      .map((x, i) => {
-        const medal =
-          i === 0 ? '<span class="badge gold">🥇</span>' :
-          i === 1 ? '<span class="badge silver">🥈</span>' :
-          '<span class="badge bronze">🥉</span>';
+  const podium = document.getElementById("podium");
   
-        return `
-          <li class="top-item" style="animation-delay:${i * 150}ms">
-            <div>${medal}<b>${x[0]}</b></div>
-            <div>€${x[1]}</div>
-          </li>
-        `;
-      })
-      .join("");
+  const medals = ["🥇", "🥈", "🥉"];
+  const classes = ["first", "second", "third"];
+  
+  podium.innerHTML = sorted.slice(0, 3)
+    .map((x, i) => {
+      return `
+        <div class="podium-item ${classes[i]}" style="animation-delay:${i * 180}ms">
+          <div class="rank">${medals[i]}</div>
+          <div class="name">${x[0]}</div>
+          <div class="amount">€ ${x[1]}</div>
+        </div>
+      `;
+    })
+    .join("");
 
   // -------------------------
   // LISTA COMPLETA
