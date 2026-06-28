@@ -90,23 +90,23 @@ async function loadData() {
     const medals = ["🥇", "🥈", "🥉"];
     const classes = ["first", "second", "third"];
 
-    podium.innerHTML = podium.innerHTML = `
-      <div class="podium-item first" style="animation-delay:0ms">
+    podium.innerHTML = `
+      <div class="podium-item first" style="animation-delay:0ms; position:relative;">
         <div class="rank">🥇</div>
-        <div class="name">${escapeHTML(sorted[0][0])}</div>
-        <div class="amount">€ ${sorted[0][1]}</div>
+        <div class="name">${escapeHTML(sorted[0]?.[0] || "—")}</div>
+        <div class="amount">€ ${sorted[0]?.[1] || 0}</div>
       </div>
     
       <div class="podium-bottom">
         <div class="podium-item second" style="animation-delay:180ms">
           <div class="rank">🥈</div>
-          <div class="name">${escapeHTML(sorted[1]?.[0] || "")}</div>
+          <div class="name">${escapeHTML(sorted[1]?.[0] || "—")}</div>
           <div class="amount">€ ${sorted[1]?.[1] || 0}</div>
         </div>
     
         <div class="podium-item third" style="animation-delay:360ms">
           <div class="rank">🥉</div>
-          <div class="name">${escapeHTML(sorted[2]?.[0] || "")}</div>
+          <div class="name">${escapeHTML(sorted[2]?.[0] || "—")}</div>
           <div class="amount">€ ${sorted[2]?.[1] || 0}</div>
         </div>
       </div>
