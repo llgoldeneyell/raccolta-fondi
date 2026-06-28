@@ -287,6 +287,53 @@
         transform: translateY(0);
       }
     }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 18px;
+        border-radius: 16px;
+      }
+    
+      .card h1 {
+        font-size: 26px;
+      }
+    
+      .subtitle {
+        font-size: 14px;
+      }
+    
+      .kpi-value {
+        font-size: 20px;
+      }
+    
+      .percent {
+        font-size: 12px;
+      }
+      
+      .kpi {
+        grid-template-columns: 1fr; /* da 2 colonne a 1 */
+        gap: 10px;
+      }
+
+      .podium-bottom {
+        flex-direction: column;
+      }
+    
+      .podium-item.second,
+      .podium-item.third {
+        flex: none;
+        width: 100%;
+      }
+    
+      .podium-item.first {
+        min-height: 140px;
+      }
+      
+      #all li {
+        font-size: 15px;
+        padding: 10px 12px;
+      }
+    }
   </style>
 </head>
 <body>
