@@ -147,6 +147,8 @@
       justify-content: center;
       align-items: center; /* 👈 QUESTO è il fix chiave */
       text-align: center;
+      flex: 1;
+      min-width: 0; /* 🔥 fondamentale per evitare “schiacciamenti strani” */
       overflow: visible;
     }
     
@@ -170,6 +172,7 @@
     .podium-bottom {
       display: flex;
       gap: 12px;
+      width: 100%;
     }
 
     .podium-bottom .podium-item {
@@ -177,6 +180,7 @@
     }
 
     .podium-item.second {
+      flex: 1.6;
       background: linear-gradient(135deg, #f8fafc, #e2e8f0);
       border: 1px solid #cbd5e1;
       box-shadow: 0 10px 25px rgba(148, 163, 184, 0.35);
@@ -195,6 +199,7 @@
     
     /* third (bronzo) più piccolo */
     .podium-item.third {
+      flex: 1;
       background: linear-gradient(135deg, #fff7ed, #fef3c7);
       border: 1px solid #f59e0b;
       box-shadow: 0 10px 25px rgba(180, 83, 9, 0.25);
