@@ -4,9 +4,20 @@
   <meta charset="UTF-8" />
   <title>Raccolta Armadietti</title>
   <style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background: radial-gradient(circle at top, #eaf2ff, #dfe9f7);
+      background: radial-gradient(circle at top, #e9f1ff, #dbe7f6);
       margin: 0;
       padding: 40px 16px;
       color: #0f172a;
@@ -14,13 +25,15 @@
     
     /* CONTAINER PRINCIPALE */
     .card {
-      background: white;
-      padding: 32px;
-      border-radius: 22px;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(8px);
+      padding: 34px;
+      border-radius: 24px;
       max-width: 780px;
       margin: auto;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
-      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 25px 80px rgba(0,0,0,0.12);
+      border: 1px solid rgba(255,255,255,0.4);
+      animation: fadeIn 0.6s ease;
     }
     
     /* TITOLO */
@@ -64,18 +77,19 @@
     
     /* PROGRESS BAR */
     .progress {
-      height: 34px;
+      height: 36px;
       background: #e2e8f0;
       border-radius: 999px;
       overflow: hidden;
       margin: 26px 0 10px 0;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
     }
     
     .bar {
       height: 100%;
       width: 0%;
       background: linear-gradient(90deg, #22c55e, #16a34a);
-      transition: width 0.8s ease;
+      transition: width 1s ease;
       border-radius: 999px;
     }
     
@@ -97,12 +111,18 @@
     .top-item {
       display: flex;
       justify-content: space-between;
-      padding: 12px 14px;
-      background: #f1f5f9;
-      border-radius: 12px;
+      padding: 14px 16px;
+      background: #f8fafc;
+      border-radius: 14px;
       font-weight: 500;
+      transition: transform 0.15s ease, background 0.2s ease;
     }
     
+    .top-item:hover {
+      transform: scale(1.02);
+      background: #eef6ff;
+    }
+        
     /* MEDAGLIE */
     .badge {
       font-size: 14px;
@@ -125,17 +145,13 @@
       border-bottom: 1px solid #eef2f7;
       color: #334155;
     }
-    
-    /* HOVER */
-    .top-item:hover {
-      background: #e2e8f0;
-    }
   </style>
 </head>
 <body>
 
 <div class="card">
   <h1>Raccolta Armadietti</h1>
+  <div class="subtitle">Raccolta fondi per acquisto armadietti</div>
   
   <div class="kpi">
     <div class="kpi-box">
@@ -151,11 +167,12 @@
 
   <div class="progress">
     <div class="bar" id="bar"></div>
-    <div class="percent" id="percent">0%</div>
   </div>
+  
+  <div class="percent" id="percent">0%</div>
 
   <h3>Top Donatori</h3>
-  <ol id="top"></ol>
+  <ol id="top" class="top"></ol>
 
   <h3>Tutti i donatori</h3>
   <ul id="all"></ul>
