@@ -116,7 +116,12 @@ async function loadData() {
     // LISTA COMPLETA
     // -------------------------
     document.getElementById("all").innerHTML =
-      sorted.map(x => `<li>${escapeHTML(x[0])} — €${x[1]}</li>`).join("");
+      alphabetic.map(name => `
+        <li>
+          <span class="avatar">${name[0].toUpperCase()}</span>
+          ${escapeHTML(name)}
+        </li>
+      `).join("");
 
   } finally {
     loadingEl.style.display = "none";
