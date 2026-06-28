@@ -113,15 +113,22 @@ async function loadData() {
     `;
 
     // -------------------------
-    // LISTA COMPLETA
+    // LISTA COMPLETA (solo nomi, alfabetica)
     // -------------------------
+    
+    const names = donationsRaw
+      .slice(1)
+      .map(row => (row[1] || "Sconosciuto").trim());
+    
+    // rimuove duplicati
+    const uniqueNames = [...new Set(names)]
+      .filter(Boolean)
+      .sort((a, b) => a.localeCompare(b, 'it', { sensitivity: 'base' }));
+    
     document.getElementById("all").innerHTML =
-      alphabetic.map(name => `
-        <li>
-          <span class="avatar">${name[0].toUpperCase()}</span>
-          ${escapeHTML(name)}
-        </li>
-      `).join("");
+      uniqueNames
+        .map(name => `<li>${escapeHTML(name)}</li>`)
+        .join("");
 
   } finally {
     loadingEl.style.display = "none";
