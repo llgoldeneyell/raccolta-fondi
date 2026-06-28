@@ -45,7 +45,7 @@ async function loadData() {
   // -------------------------
   // PROGRESS BAR
   // -------------------------
-  let percent = (total / goal) * 100;
+  let percent = goal > 0 ? (total / goal) * 100 : 0;
   if (percent > 100) percent = 100;
 
   document.getElementById("bar").style.width = percent + "%";
