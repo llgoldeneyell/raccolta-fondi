@@ -56,7 +56,7 @@ async function loadData() {
   // -------------------------
   let sorted = Object.entries(donations)
     .sort((a,b)=>b[1]-a[1]);
-
+  
   document.getElementById("top").innerHTML =
     sorted.slice(0,3)
       .map((x, i) => {
@@ -66,13 +66,13 @@ async function loadData() {
           '<span class="badge bronze">🥉</span>';
   
         return `
-          <li class="top-item">
+          <li class="top-item" style="animation-delay:${i * 150}ms">
             <div>${medal}<b>${x[0]}</b></div>
             <div>€${x[1]}</div>
           </li>
         `;
       })
-    .join("");
+      .join("");
 
   // -------------------------
   // LISTA COMPLETA
@@ -86,19 +86,23 @@ async function loadData() {
 function animateValue(el, start, end, duration) {
   let startTimestamp = null;
 
+  const easeOut = t => t * (2 - t);
+
   const step = (timestamp) => {
     if (!startTimestamp) startTimestamp = timestamp;
-    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
 
-    const value = Math.floor(progress * (end - start) + start);
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    const eased = easeOut(progress);
+
+    const value = Math.floor(eased * (end - start) + start);
     el.innerText = value;
 
     if (progress < 1) {
-      window.requestAnimationFrame(step);
+      requestAnimationFrame(step);
     }
   };
 
-  window.requestAnimationFrame(step);
+  requestAnimationFrame(step);
 }
 
 loadData();
