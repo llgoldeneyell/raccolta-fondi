@@ -133,17 +133,21 @@
       color: #334155;
     }
 
-    .podium {
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 12px;
-      margin-top: 20px;
+     .podium {
+       display: grid;
+       grid-template-columns: 1fr 1fr 1fr;
+       grid-template-areas:
+         ". first ."
+         "second . third";
+       gap: 12px;
+       justify-items: center;
+       align-items: end;
+       row-gap: 18px;
+       animation: popIn 0.6s cubic-bezier(.2,1.2,.2,1) both;
     }
     
     /* base card */
     .podium-item {
-      width: 33%;
       background: #f8fafc;
       border-radius: 16px;
       padding: 16px;
@@ -158,11 +162,12 @@
     
     /* 🥇 PRIMO POSTO (CENTRO) */
     .podium-item.first {
-      transform: translateY(-10px) scale(1.05);
+      grid-area: first;
       background: linear-gradient(135deg, #fff7d6, #ffffff);
       border: 1px solid #fbbf24;
       box-shadow: 0 12px 30px rgba(251,191,36,0.35);
       position: relative;
+      transform: translateY(-10px) scale(1.08);
     }
     
     /* GLOW ORO */
@@ -182,9 +187,12 @@
     }
     
     /* second e third */
-    .podium-item.second,
+    .podium-item.second {
+      grid-area: second;
+    }
     .podium-item.third {
-      transform: scale(0.95);
+      grid-area: third;
+      transform: translateY(10px) scale(0.95);
     }
     
     /* badge */
