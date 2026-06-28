@@ -22,8 +22,6 @@ async function fetchCSV(url) {
     .map(r => r.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/));
 }
 
-const value = Number(x[1]) || 0;
-
 async function loadData() {
   if (loading) return;   // 🔒 blocca doppie esecuzioni
   loading = true;
@@ -59,7 +57,7 @@ async function loadData() {
     let total = 0;
 
     donationsRaw.slice(1).forEach(row => {
-      const name = row[1];
+      const name = row[1] || "Sconosciuto";
       const value = parseFloat(row[2]) || 0;
 
       if (!donations[name]) donations[name] = 0;
@@ -97,7 +95,7 @@ async function loadData() {
         <div class="podium-item ${classes[i]}" style="animation-delay:${i * 180}ms">
           <div class="rank">${medals[i]}</div>
           <div class="name">${escapeHTML(x[0])}</div>
-          <div class="amount">€ ${value}</div>
+          <div class="amount">€ ${Number(x[1]) || 0}</div>
         </div>
       `)
       .join("");
