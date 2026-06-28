@@ -37,14 +37,20 @@ async function loadData() {
     // IMPOSTAZIONI
     // -------------------------
     let goal = 0;
+    let title = "";
+    let subtitle = "";
 
     settingsRaw.slice(1).forEach(row => {
       const key = row[0];
-      const value = parseFloat(row[1]) || 0;
+      const value = row[1];
 
-      if (key === "Obiettivo") goal = value;
+      if (key === "Obiettivo") goal = parseFloat(value) || 0;
+      if (key === "Titolo") title = value;
+      if (key === "Sottotitolo") subtitle = value;
     });
     
+    document.querySelector(".card h1").textContent = title || "Raccolta";
+    document.querySelector(".subtitle").textContent = subtitle || "";
     const goalEl = document.getElementById("goal");
     if (parseInt(goalEl.innerText) !== goal) {
       animateValue(goalEl, 0, goal, 900);
