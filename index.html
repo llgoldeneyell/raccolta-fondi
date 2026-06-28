@@ -133,41 +133,34 @@
       color: #334155;
     }
 
-     .podium {
-       display: grid;
-       grid-template-columns: 1fr 1fr 1fr;
-       grid-template-areas:
-         ". first ."
-         "second . third";
-       gap: 12px;
-       justify-items: center;
-       align-items: end;
-       row-gap: 18px;
-       animation: popIn 0.6s cubic-bezier(.2,1.2,.2,1) both;
+    .podium {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 20px;
     }
     
-    /* base card */
+    /* base item ora flessibile */
     .podium-item {
-      background: #f8fafc;
-      border-radius: 16px;
-      padding: 16px;
-      text-align: center;
-    
-      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-      transition: transform 0.3s ease;
-      animation: popIn 0.5s ease forwards;
-      opacity: 0;
-      transform: translateY(10px);
+      flex: 1;
+      width: auto; /* override del 33% */
     }
     
     /* 🥇 PRIMO POSTO (CENTRO) */
     .podium-item.first {
-      grid-area: first;
-      background: linear-gradient(135deg, #fff7d6, #ffffff);
-      border: 1px solid #fbbf24;
-      box-shadow: 0 12px 30px rgba(251,191,36,0.35);
-      position: relative;
-      transform: translateY(-10px) scale(1.08);
+      width: 100%;
+      display: block;
+    }
+    .podium-bottom {
+      display: flex;
+      gap: 12px;
+    }
+
+    .podium-item.second {
+      flex: 1;
+    }/* third (bronzo) più piccolo */
+    .podium-item.third {
+      flex: 0.6;
     }
     
     /* GLOW ORO */
@@ -184,15 +177,6 @@
     @keyframes glowPulse {
       0%, 100% { opacity: 0.6; }
       50% { opacity: 1; }
-    }
-    
-    /* second e third */
-    .podium-item.second {
-      grid-area: second;
-    }
-    .podium-item.third {
-      grid-area: third;
-      transform: translateY(10px) scale(0.95);
     }
     
     /* badge */
