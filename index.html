@@ -137,7 +137,7 @@
       display: flex;
       flex-direction: column;
       gap: 14px;
-      margin-top: 20px;
+      width: 100%;
     }
     
     /* base item ora flessibile */
@@ -152,31 +152,35 @@
       overflow: visible;
       min-height: 120px;
       padding: 14px 12px;
+      box-sizing: border-box;
+      width: 100%;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     }
     
     /* 🥇 PRIMO POSTO (CENTRO) */
     .podium-item.first {
-      width: 100%;
       position: relative;
-      display: flex;              /* 🔥 non block */
+      display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
     
+      min-height: 180px;
+    
       background: linear-gradient(135deg, #fff7d6, #ffffff);
       border: 1px solid #fbbf24;
       box-shadow: 0 12px 30px rgba(251,191,36,0.25);
     
-      overflow: visible;
-      min-height: 180px;
+      margin: 0;            /* 🔥 importantissimo */
     }
     
     /* GLOW ORO */
     .podium-item.first::after {
       content: "";
       position: absolute;
-      inset: -6px;
+      inset: 0; /* ❗ invece di -6px */
       border-radius: 18px;
       background: radial-gradient(circle, rgba(251,191,36,0.45), transparent 70%);
       z-index: -1;
