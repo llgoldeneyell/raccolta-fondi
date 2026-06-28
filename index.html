@@ -120,69 +120,6 @@
       margin-bottom: 20px;
     }
     
-    /* TOP DONATORI */
-    .top {
-      display: grid;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    
-    .top-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    
-      padding: 16px 18px;
-      background: #f8fafc;
-      border-radius: 16px;
-    
-      font-weight: 500;
-    
-      opacity: 0;
-      transform: translateY(10px);
-      animation: popIn 0.45s ease forwards;
-    
-      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
-    }
-
-    .top-item.first {
-      background: linear-gradient(135deg, #fff7d6, #fff);
-      border: 1px solid #fbbf24;
-      box-shadow: 0 8px 20px rgba(251,191,36,0.25);
-    }
-
-    .top-item b {
-      font-weight: 600;
-    }
-    
-    .top-item div:last-child {
-      font-weight: 700;
-      color: #0f172a;
-    }
-    
-    @keyframes popIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-        
-    .top-item:hover {
-      transform: scale(1.02);
-      background: #eef6ff;
-    }
-        
-    /* MEDAGLIE */
-    .badge {
-      font-size: 14px;
-      margin-right: 8px;
-    }
-    
-    .gold { color: #fbbf24; }
-    .silver { color: #94a3b8; }
-    .bronze { color: #b45309; }
-    
     /* LISTA */
     ul {
       list-style: none;
