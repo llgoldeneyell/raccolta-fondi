@@ -6,105 +6,129 @@
   <style>
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-      background: linear-gradient(135deg, #eef2f7, #dbe7f5);
+      background: radial-gradient(circle at top, #eaf2ff, #dfe9f7);
       margin: 0;
       padding: 40px 16px;
-      color: #111827;
+      color: #0f172a;
     }
     
+    /* CONTAINER PRINCIPALE */
     .card {
       background: white;
-      padding: 28px;
-      border-radius: 18px;
-      max-width: 700px;
+      padding: 32px;
+      border-radius: 22px;
+      max-width: 780px;
       margin: auto;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.10);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+      border: 1px solid rgba(0,0,0,0.05);
     }
     
-    /* HEADER */
+    /* TITOLO */
     .card h1 {
-      font-size: 30px;
-      margin: 0 0 10px 0;
-      letter-spacing: -0.5px;
+      font-size: 34px;
+      margin: 0 0 6px 0;
+      letter-spacing: -0.8px;
     }
     
-    .card h2 {
-      margin: 6px 0;
-      font-weight: 500;
-      color: #374151;
+    .subtitle {
+      color: #64748b;
+      margin-bottom: 20px;
     }
     
-    /* NUMERI IMPORTANTI */
-    #raised {
-      font-size: 28px;
+    /* GRID KPI */
+    .kpi {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 20px 0;
+    }
+    
+    .kpi-box {
+      background: #f8fafc;
+      padding: 16px;
+      border-radius: 14px;
+      text-align: left;
+      border: 1px solid #e5e7eb;
+    }
+    
+    .kpi-label {
+      font-size: 12px;
+      color: #64748b;
+    }
+    
+    .kpi-value {
+      font-size: 24px;
       font-weight: 700;
-      color: #16a34a;
+      margin-top: 6px;
     }
     
-    #goal {
-      font-weight: 700;
-    }
-    
-    /* PROGRESS */
+    /* PROGRESS BAR */
     .progress {
-      height: 30px;
-      background: #e5e7eb;
+      height: 34px;
+      background: #e2e8f0;
       border-radius: 999px;
       overflow: hidden;
-      margin: 24px 0;
-      position: relative;
+      margin: 26px 0 10px 0;
     }
     
     .bar {
       height: 100%;
       width: 0%;
       background: linear-gradient(90deg, #22c55e, #16a34a);
-      transition: width 0.7s ease;
+      transition: width 0.8s ease;
       border-radius: 999px;
     }
     
-    /* TITOLI SEZIONI */
-    h3 {
-      margin-top: 28px;
-      margin-bottom: 10px;
-      font-size: 18px;
-      color: #111827;
+    /* PERCENTUALE */
+    .percent {
+      text-align: right;
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 20px;
     }
     
     /* TOP DONATORI */
-    ol {
-      list-style: none;
-      padding: 0;
-      margin: 0 auto;
-      max-width: 420px;
+    .top {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
     }
     
-    ol li {
-      background: #f3f4f6;
-      margin: 8px 0;
-      padding: 10px 14px;
-      border-radius: 10px;
+    .top-item {
       display: flex;
       justify-content: space-between;
+      padding: 12px 14px;
+      background: #f1f5f9;
+      border-radius: 12px;
       font-weight: 500;
     }
     
-    /* CLASSIFICA COMPLETA */
+    /* MEDAGLIE */
+    .badge {
+      font-size: 14px;
+      margin-right: 8px;
+    }
+    
+    .gold { color: #fbbf24; }
+    .silver { color: #94a3b8; }
+    .bronze { color: #b45309; }
+    
+    /* LISTA */
     ul {
       list-style: none;
       padding: 0;
-      margin: 0 auto;
-      max-width: 420px;
+      margin-top: 10px;
     }
     
     ul li {
       padding: 8px 10px;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #eef2f7;
+      color: #334155;
     }
     
-    /* EFFETTO HOVER */
-    ol li:hover, ul li:hover {
-      background: #eaf5ee;
+    /* HOVER */
+    .top-item:hover {
+      background: #e2e8f0;
     }
   </style>
 </head>
@@ -112,12 +136,22 @@
 
 <div class="card">
   <h1>Raccolta Armadietti</h1>
-
-  <h2>Obiettivo: € <span id="goal">...</span></h2>
-  <h2>Raccolto: € <span id="raised">...</span></h2>
+  
+  <div class="kpi">
+    <div class="kpi-box">
+      <div class="kpi-label">Obiettivo</div>
+      <div class="kpi-value">€ <span id="goal">0</span></div>
+    </div>
+  
+    <div class="kpi-box">
+      <div class="kpi-label">Raccolto</div>
+      <div class="kpi-value" style="color:#16a34a;">€ <span id="raised">0</span></div>
+    </div>
+  </div>
 
   <div class="progress">
     <div class="bar" id="bar"></div>
+    <div class="percent" id="percent">0%</div>
   </div>
 
   <h3>Top Donatori</h3>
