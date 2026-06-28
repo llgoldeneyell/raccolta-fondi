@@ -1,4 +1,4 @@
-const SHEET_URL = "INCOLLA_QUI_LINK_CSV_GOOGLE_SHEET";
+const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQtl15W2lRjLUSaO28IQLEEQBG6Ekqshn7ezMvEhFonEhaxwz5cQtaigJbCVYkIdEUW3NqQCLh4fsaP/pub?gid=0&single=true&output=csv";
 
 async function loadData() {
   const res = await fetch(SHEET_URL);
