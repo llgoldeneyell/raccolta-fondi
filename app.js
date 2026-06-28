@@ -138,23 +138,20 @@ async function loadData() {
         a.localeCompare(b, 'it', { sensitivity: 'base' })
       );
 
-    const getInitials = (name) =>
+    const formatName = (name) =>
       name
+        .toLowerCase()
+        .trim()
         .split(" ")
         .filter(Boolean)
-        .slice(0, 2)
-        .map(w => w[0].toUpperCase())
-        .join("");
-
-    console.log(uniqueNames);
-console.log(getInitials("Marco Rossi"));
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+        .join(" ");
     
     document.getElementById("all").innerHTML =
       uniqueNames
         .map(name => `
           <li>
-            <span class="avatar">${getInitials(name)}</span>
-            ${escapeHTML(name)}
+            ${escapeHTML(formatName(name))}
           </li>
         `)
         .join("");
