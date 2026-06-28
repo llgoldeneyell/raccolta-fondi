@@ -5,61 +5,106 @@
   <title>Raccolta Armadietti</title>
   <style>
     body {
-      font-family: system-ui, Arial;
-      background: linear-gradient(135deg, #eef2f7, #dfe7f1);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      background: linear-gradient(135deg, #eef2f7, #dbe7f5);
       margin: 0;
-      padding: 40px 20px;
-      text-align: center;
-      color: #1f2937;
+      padding: 40px 16px;
+      color: #111827;
     }
     
     .card {
       background: white;
-      padding: 30px;
-      border-radius: 16px;
-      max-width: 650px;
+      padding: 28px;
+      border-radius: 18px;
+      max-width: 700px;
       margin: auto;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.10);
     }
     
-    /* TITOLI */
+    /* HEADER */
     .card h1 {
+      font-size: 30px;
       margin: 0 0 10px 0;
-      font-size: 28px;
+      letter-spacing: -0.5px;
     }
     
     .card h2 {
-      margin: 8px 0;
+      margin: 6px 0;
       font-weight: 500;
+      color: #374151;
     }
     
-    /* PROGRESS BAR */
+    /* NUMERI IMPORTANTI */
+    #raised {
+      font-size: 28px;
+      font-weight: 700;
+      color: #16a34a;
+    }
+    
+    #goal {
+      font-weight: 700;
+    }
+    
+    /* PROGRESS */
     .progress {
-      height: 28px;
+      height: 30px;
       background: #e5e7eb;
       border-radius: 999px;
       overflow: hidden;
-      margin: 25px 0;
+      margin: 24px 0;
+      position: relative;
     }
     
     .bar {
       height: 100%;
       width: 0%;
       background: linear-gradient(90deg, #22c55e, #16a34a);
-      transition: width 0.6s ease;
+      transition: width 0.7s ease;
       border-radius: 999px;
     }
     
-    /* LISTE */
-    ol, ul {
-      text-align: left;
-      max-width: 400px;
-      margin: 10px auto;
-      padding-left: 20px;
+    /* TITOLI SEZIONI */
+    h3 {
+      margin-top: 28px;
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #111827;
     }
     
-    li {
-      padding: 6px 0;
+    /* TOP DONATORI */
+    ol {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 420px;
+    }
+    
+    ol li {
+      background: #f3f4f6;
+      margin: 8px 0;
+      padding: 10px 14px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 500;
+    }
+    
+    /* CLASSIFICA COMPLETA */
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 420px;
+    }
+    
+    ul li {
+      padding: 8px 10px;
+      border-bottom: 1px solid #eee;
+    }
+    
+    /* EFFETTO HOVER */
+    ol li:hover, ul li:hover {
+      background: #eaf5ee;
     }
   </style>
 </head>
