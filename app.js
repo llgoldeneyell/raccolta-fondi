@@ -59,8 +59,20 @@ async function loadData() {
 
   document.getElementById("top").innerHTML =
     sorted.slice(0,3)
-      .map(x => `<li><b>${x[0]}</b> — €${x[1]}</li>`)
-      .join("");
+      .map((x, i) => {
+        const medal =
+          i === 0 ? '<span class="badge gold">🥇</span>' :
+          i === 1 ? '<span class="badge silver">🥈</span>' :
+          '<span class="badge bronze">🥉</span>';
+  
+        return `
+          <li class="top-item">
+            <div>${medal}<b>${x[0]}</b></div>
+            <div>€${x[1]}</div>
+          </li>
+        `;
+      })
+    .join("");
 
   // -------------------------
   // LISTA COMPLETA
