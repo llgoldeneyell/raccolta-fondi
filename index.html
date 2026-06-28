@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Raccolta Armadietti</title>
   <style>
     @keyframes fadeIn {
@@ -38,7 +38,7 @@
     
     /* TITOLO */
     .card h1 {
-      font-size: 34px;
+      font-size: clamp(22px, 4vw, 34px);
       margin: 0 0 6px 0;
       letter-spacing: -0.8px;
     }
@@ -148,7 +148,7 @@
       background: rgba(255,255,255,0.85);
       border: 1px solid #e2e8f0;
     
-      font-size: 14px;
+      font-size: clamp(14px, 3.5vw, 18px);
       color: #334155;
     
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
@@ -288,7 +288,7 @@
       }
     }
 
-    @media (max-width: 1200px) {
+    @media (max-width: 768px) {
       body {
         font-size: 17px;
       }
@@ -334,8 +334,7 @@
       }
       
       #all li {
-        font-size: 47px !important;
-        background: red !important;
+        font-size: 1rem;
         padding: 12px 14px;
       }
     }
