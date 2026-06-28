@@ -145,6 +145,9 @@ async function loadData() {
         .slice(0, 2)
         .map(w => w[0].toUpperCase())
         .join("");
+
+    console.log(uniqueNames);
+console.log(getInitials("Marco Rossi"));
     
     document.getElementById("all").innerHTML =
       uniqueNames
