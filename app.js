@@ -64,9 +64,16 @@ async function loadData() {
 
     donationsRaw.slice(1).forEach(row => {
       const name = row[1] || "Sconosciuto";
-      const value = parseFloat(row[2].replace(",", ".")) || 0;
-
+      console.log("Valore letto:", row[2], "->", value);
+      const value =
+        parseFloat(
+          String(row[2] || "0")
+            .replace(",", ".")
+            .trim()
+        ) || 0;
+    
       if (!donations[name]) donations[name] = 0;
+    
       donations[name] += value;
       total += value;
     });
