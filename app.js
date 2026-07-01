@@ -64,13 +64,13 @@ async function loadData() {
 
     donationsRaw.slice(1).forEach(row => {
       const name = row[1] || "Sconosciuto";
-      console.log("Valore letto:", row[2], "->", value);
-      const value =
-        parseFloat(
-          String(row[2] || "0")
-            .replace(",", ".")
-            .trim()
-        ) || 0;
+    
+      const value = parseFloat(
+        String(row[2] || "0")
+          .replace(/"/g, "")
+          .replace(",", ".")
+          .trim()
+      ) || 0;
     
       if (!donations[name]) donations[name] = 0;
     
